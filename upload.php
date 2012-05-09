@@ -26,9 +26,9 @@ if($Airpic->session->sessionExists())
                 $size = $_FILES["path"]["size"];
 
                 if($_FILES["path"]["type"] == "image/jpeg")
-                    $newFilename = $Airpic->session->user->getUserID() . time() . ".jpg";
+                    $newFilename = $userid . time() . ".jpg";
                 else
-                    $newFilename = $Airpic->session->user->getUserID() . time() . ".png";
+                    $newFilename = $userid . time() . ".png";
 
                 $fullPath = "images/" . $newFilename;
 
