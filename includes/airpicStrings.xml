@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<airpicString>
+<key id="Title">Title that you want</key>
+<key id="Site Title">Your site title</key>
+<key id="Slogan"/>
+<key id="dburl">127.0.0.1</key>
+<key id="dbusername">database username goes here</key>
+<key id="dbpassword">database password goes here</key>
+<key id="database">database name goes here</key>
+<key id="logPath">full path to your sessionLog.txt file goes here(/var/www/mySite/log/sessionLog.txt)</key>
+</airpicString>

@@ -1,0 +1,136 @@
+Airpic
+=========== Airpic===============
+    // --- ATTRIBUTES ---
+    + $settings
+    + $common
+    + $db
+    + $session
+    + $page
+    + $userRegistration
+
+    // --- OPERATIONS ---
+    + __construct()
+
+========= Common ===============
+    + encrypt($text) -  Takes text and encrypts it with sha512 then returns it
+    + hash($text) -  Takes the string and passes it to the encrypt function and returns it aka encrypt
+    + redirect($url) -   sends header location of the page to be redirected to
+    + generateToken() - Generates an alphanumeric string that is 200 characters long.
+    + appendToFile($fileName, $message) - Takes a file name and a message. The message is written to the file that  was given
+
+=========== DatabaseManager==============
+    + __construct($_settings) - Creates a connection to the database using the settings from the settings object passed in
+    + query($sql) - This will perform a query on the database we are connected to and return the results
+    + getLastID() - Retrieves the ID generated for an AUTO_INCREMENT column by the previous query (usually INSERT).
+    + __destruct() - Closes the connection to the database
+
+============ Page ====================
+    + __construct($_session)
+    + setFooter($content) - Receives text and appends it to the footer text (footText) of this
+    + setHeader($text) - Receives text and appends it to the header text (headText) of this
+    + setNotification($text) - Receives text and appends it to the notification text (notificationText) this instance.
+    + setSideLink($sideLink)
+    + displayPage($page, $title) - Constructs a webpage
+
+============= Session ===============
+    // --- ATTRIBUTES ---
+    + $user
+
+    // --- OPERATIONS ---
+    + __construct($_db, $_settings, $_common) - Sets up all the data
+    + isAdministrator() - Returns 1 if current User is an Admin. Else 0
+    + isUser() - Returns 1 if current User is an User. Else 0
+    + isManager() - Returns 1 if current User is an Manager. Else 0
+    + isUserAdministrator($_userName) - Returns 1 if User defined is an Admin. Else 0
+    + isUserUser($_userName) - Returns 1 if User defined is an User. Else 0
+    + isUserManager($_userName) - Returns 1 if User defined is an Manager. Else 0
+    + loginRedirect($username, $password, $redirect="index.php", $remember=false) - Takes the user and password, verifies them and points them to the index page.
+    + logout() - Removes current users session from the session table
+    + sessionStart() - Takes the current session and checks if it is existing. Then starts it.
+    + sessionExists() - Checks to see if the session exists in the database. Also creates a cookie or not if selected if the session exists
+
+    //Admin functions
+    + getAllActiveSessions() - Returns all active sessions in the session table
+    + getSessionByToken($token) - Makes the object have everything it needs
+    + getSessionByUser($user) - Makes the object have everything it needs
+    + getUserName()
+    + getIpAddress()
+    + getUserSessionKey()
+    + getSessionKey()
+    + getDateCreated()
+    + getLastSeen()
+    + getUserNameByToken($session) - get user name by token
+    + getUserIDByToken($TokenIn) - Get the user id based on the token
+    + checkSessionExists($userNameIn) - Checks is the a user has a existing session
+    + logOutUserPast($daysIn) - Logs out all the users past a given days back
+    + logoutUser($user) - Removes the user from the session table
+    + logoutSession($session)
+
+======== Settings ===========
+    + __construct()
+    + getDbUrl() - Returns the url for the database
+    + getDbUsername() - Returns the url for the database
+    + getDbPassword() - Returns the password for the database
+    + getDatabase() - Returns the database for the database
+    + getLogPath() - Returns the database for the database
+    + getTitle() - Returns the database for the database
+    + getSiteTitle() - Returns the database for the database
+    + getSlogan() - Returns the database for the database
+    + getStringsLocation()
+
+========= Strings ===========
+	+ __construct($_XMLFile)
+    + addString($_stringKey, $_stringValue) - Adds a string to the strings.xml file
+    + editString($_stringKey, $_stringValue) - Edits a strings value in the strings.xml file
+    + getStringByName($_stringKey) - Returns a single string from strings.xml file in a .html formatted string
+    + getXMLCount() - Returns the number of strings in the XML file.
+    + getXML() - Returns the strings.xml file in a .html formatted string
+    + deleteString($_stringKey) - Delete a string to the strings.xml file
+    + stringErrorChecking($_string, $_method) - Check the input of user
+
+======== User ================
+    + __construct($_db, $_settings, $_common) - Instantiates an user object.
+    + getBirthDate() - Returns the birthdate
+    + getUserID() - Returns the userid
+    + getUsername() - Returns the username
+    + getFirstName() - Returns the firstname of the user
+    + getLastName() - Returns the lastname of the user
+    + getEmail() - Returns the email of the user
+    + getLastModified() - Returns the time that the user was last modified
+    + getModifiedBy() - Returns the name of the person that last modified the user
+    + getRoleID() - Returns the role id of the user
+    + setUserid($_userid) - Sets the userid
+    + setUsername($_username) - Sets the username
+    + setFirstName($_firstName) - Sets the firstname for the user
+    + setLastName($_lastName) - Sets the lastname for the user
+    + setEmail($_email) - Sets the email for the user
+    + setLastModified($_lastModified) - Sets last modified time
+    + setModifiedBy($_modifiedBy) - Sets modified by. This is the person that modified the user
+    + setRoleID($_roleID) - Sets the role id
+    + setBirthdate($_birthdate) * Sets the birthdate for the user
+    + loadUserByUserName($username) - Loads the users information into the object
+    + loadUsersByID($userid) - Loads an user into an instantiated object by the userid provided
+    + checkForUser($username) - Checks to see if the username is already in the table and returns a bool
+    + getAllUserNames()
+
+==== UserRegistration ====
+    + __construct($_db)
+    + createToken($username)
+        * Creates a token for the user and inserts into the database. It emails the the token and how to confirm their account. To ensure the token is
+        * completely unique we append the username onto the end and then hash the string again.
+    + confirmToken($token) - Confirms the user in the user registration table and activates the user
+    + createUserNow($time, $email, $username, $password, $fname, $lname, $role) -
+    Creates and approves the user right away (for admin use)
+    + addUser($time, $email, $username, $password, $fname, $lname, $role)
+        * Adds the user to the user registration table to await confirmation or approval of account
+    + approveUser($userName)
+        * Takes a user name that is in the user reg table and creates a entry in the user table and in the role table. This allows
+        * the user to log into the system
+    + denyUser($userName) - Takes a user name and calls the delete user function
+    + deleteUser($userName) - Takes a user name and removes it from the user reg table.
+    + denyAllUserType($userType)
+        * Takes a user type and queries the user reg table to get all of that type. Then calles the deny user function for all the usernames.
+    + approveAllUserType($userType)
+        * Takes a user type and selects all the type from the user reg table. Then it calls the approve user function for each user name.
+    + getUsersByType($userType) - Takes a user type and gets all the users for that type from the user reg table.
+    + checkForUser($username) - Checks to see if the username is already in the table and returns a bool

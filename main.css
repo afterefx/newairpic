@@ -1,0 +1,273 @@
+html, body
+{
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #3d3d3d;
+}
+
+a img
+{
+    text-decoration: none;
+    border: 0;
+}
+
+#header { background-color: #7d7d7d; }
+
+#title
+{
+    display: block;
+    height: 50px;
+    text-align: center;
+    font-size: 1.25em;
+    font-family: 'Homemade Apple', serif;
+    font-weight: bold;
+    margin: auto;
+    padding: 0;
+    position:  relative;
+    color: #fff;
+    background-color: #7d7d7d;
+    max-width: 900px;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+#title a
+{
+    color:#fff;
+    text-decoration:none;
+}
+
+#title a:visited
+{ color: #fff; }
+
+#title p {
+    margin: 0;
+    padding: 0 6px 0 6px;
+}
+
+#title p#left{
+    float: left;
+    font-size: 1.1em;
+}
+
+#title p#right{
+    float: right;
+}
+
+#gallery
+{
+    background-color: #3d3d3d;
+    padding-top: 40px;
+    text-align: center; 
+}
+
+.row { padding: 0 0 10px 0;}
+
+.pic
+{
+    display: inline;
+    text-align: center;
+    width: 425px;
+    padding: 10px;
+}
+
+.pic a img {
+    border-top: 5px solid #fff;
+    border-right: 5px solid #fff;
+    border-bottom: 30px solid #fff;
+    border-left: 5px solid #fff;
+    max-width:250px;
+}
+
+#gallery .pic a img:hover{
+
+    -webkit-transform: rotate(-7deg);
+    -moz-transform: rotate(-7deg);
+    -o-transform: rotate(-7deg);
+}
+
+
+
+#blankScreen{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    visibility: hidden;
+    background-color: #111;
+    opacity:0.7;
+    filter:alpha(opacity=70)
+}
+
+#loginMenu{
+    position: absolute;
+    top: 43%;
+    right: 43%;
+    z-index: 2;
+    background-color:#999;
+    visibility: hidden;
+    border: 1px #000 solid;
+}
+
+#frontImage{
+    margin: auto;
+    margin-bottom: 0px;
+    margin-top: 20px;
+    text-align:center;
+    padding: 0;
+}
+
+#frontLogin{
+    margin: auto;
+    margin-top: 10px;
+    padding: 4px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #3d3d3d;
+    width: 220px;
+    background-color:#999;
+    padding-right: 0;
+    text-align: center;
+}
+
+#frontLogin input[type="text"],#frontLogin input[type="password"] {
+border: 1px solid #3d3d3d;
+width: 120px;
+}
+
+#frontLogin input[type="submit"]{
+    border: 1px solid #3d3d3d;
+}
+
+#frontLogin p{padding:0;margin:0;}
+
+#login:hover {
+    cursor:pointer;
+}
+
+.singleArea
+{
+    background-color:#7d7d7d;
+    margin: auto;
+    margin-top: 70px;
+    padding: 30px;
+    width:500px;
+    text-align: center;
+    border: 0;
+    font-size: .7em;
+}
+
+.singleArea a img, .singleArea img
+{
+    margin: auto;
+    text-align: center;
+    max-width: 400px;
+    border-top: 5px solid #fff;
+    border-right: 5px solid #fff;
+    border-bottom: 30px solid #fff;
+    border-left: 5px solid #fff;
+}
+
+.singleArea form img
+{
+    border: 0;
+}
+
+.singleArea form
+{
+    vertical-align: middle;
+}
+
+.singleArea p#file
+{
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #3d3d3d;
+    text-align: left;
+}
+
+.singleArea table
+{ 
+    margin: auto;
+    padding: 2px; 
+}
+
+.singleArea table#session
+{ width: 450px;}
+
+.singleArea .label
+{ text-align: right; }
+
+.singleArea table#strings, table#strings tr, table#strings tr td, #newVal
+{
+    padding: 0;
+    margin: 0;
+    font-size: 1.15em;
+    border: 1px #000 solid;
+}
+
+#newVal{
+    border:0;
+}
+.singleArea a
+{ color: #fff; }
+
+#accountMenu{
+    position: absolute;
+    right: 23%;
+    top: 5%;
+    z-index: 1;
+    background-color:#999;
+    visibility: hidden;
+    border: 1px #000 solid;
+    margin: 0;
+    padding: 8px;
+    line-height: 20px;
+    text-align: left;
+}
+
+#accountMenu a{
+    text-decoration:none;
+    color:#fff;
+}
+
+#accountMenu a:hover {
+    text-decoration: underline;
+}
+
+#notification
+{
+    background-color:#7d7d7d;
+    font-size: .7em;
+    margin: auto;
+    padding: 4px;
+    margin-top: 10px;
+    width: 300px;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+#pageLinks
+{
+    color: #fff;
+    margin: auto;
+    text-align: center;
+}
+
+#pageLinks a
+{ color: #fff; }
+
+#pageLinks p
+{ text-align: center;}
+
+#sure
+{
+    color: #fff;
+    font-weight: bold;
+}

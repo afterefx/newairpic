@@ -1,0 +1,103 @@
+-- phpMyAdmin SQL Dump
+-- version 3.4.5deb1
+-- http://www.phpmyadmin.net
+--
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `imgInfo`
+--
+
+DROP TABLE IF EXISTS `imgInfo`;
+CREATE TABLE IF NOT EXISTS `imgInfo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid` int(11) NOT NULL,
+  `filename` varchar(20) NOT NULL,
+  `size` int(11) NOT NULL,
+  `created` int(11) NOT NULL,
+  `views` int(11) NOT NULL,
+  `bandwidth` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `filename` (`filename`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `imgURL`
+--
+
+DROP TABLE IF EXISTS `imgURL`;
+CREATE TABLE IF NOT EXISTS `imgURL` (
+  `id` int(11) NOT NULL,
+  `view` varchar(7) NOT NULL,
+  `del` varchar(7) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `view` (`view`,`del`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `session`
+--
+
+DROP TABLE IF EXISTS `session`;
+CREATE TABLE IF NOT EXISTS `session` (
+  `token` varchar(300) CHARACTER SET utf8 NOT NULL,
+  `userid` int(11) NOT NULL,
+  `userName` varchar(15) CHARACTER SET utf8 NOT NULL,
+  `ipAddress` varchar(15) CHARACTER SET utf8 NOT NULL,
+  `dateCreated` int(11) NOT NULL,
+  `lastSeen` int(11) NOT NULL,
+  PRIMARY KEY (`token`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userRegistration`
+--
+
+DROP TABLE IF EXISTS `userRegistration`;
+CREATE TABLE IF NOT EXISTS `userRegistration` (
+  `token` varchar(50) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `fName` varchar(30) NOT NULL,
+  `lName` varchar(30) NOT NULL,
+  `isAdmin` int(11) NOT NULL,
+  `password` varchar(512) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  PRIMARY KEY (`token`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `userid` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(15) CHARACTER SET utf8 NOT NULL,
+  `password` varchar(512) CHARACTER SET utf8 NOT NULL,
+  `fname` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `lname` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `email` varchar(40) CHARACTER SET utf8 NOT NULL,
+  `createdOn` int(11) NOT NULL,
+  `modified` int(11) DEFAULT NULL,
+  `modifiedBy` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `birthDate` int(11) NOT NULL,
+  `isAdmin` int(11) NOT NULL DEFAULT '0',
+  `enabled` int(11) NOT NULL DEFAULT '0',
+  `questionID` int(11) NOT NULL,
+  `secretAnswer` int(11) NOT NULL,
+  `lastLogIn` int(11) DEFAULT NULL,
+  PRIMARY KEY (`userid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
