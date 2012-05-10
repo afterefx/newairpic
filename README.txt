@@ -3,8 +3,8 @@ Create the database structure by using the schema text file provided
     mysql.schema
 
 Add an user to the database and also create a driver page to give you the
-encoded password to place in teh password field. Be sure and use the backend
-provided
+encoded password to place in the password field. Be sure and use the backend
+provided.
 
 Update the following files:
     class.Settings.php
